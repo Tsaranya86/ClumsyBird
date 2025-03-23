@@ -13,7 +13,17 @@ jobs:
     # Check out the repository
     - name: Checkout code
       uses: actions/checkout@v3
- 
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+
     # Set up AWS credentials
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v3
