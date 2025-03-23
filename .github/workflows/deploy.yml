@@ -24,13 +24,7 @@ jobs:
       run: mvn clean install
 
 
-    # Set up AWS credentials
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v3
-      with:
-        aws-access-key-id: ${{ secrets.AKIAV7OAZA6UK5UTC2HZ }}
-        aws-secret-access-key: ${{ secrets.tnKpkQsCytwfHAZWQHR2Qf+NGEQnzo4rrP0FWs0x }}
-        aws-region: us-east-1
+
  
    
  
