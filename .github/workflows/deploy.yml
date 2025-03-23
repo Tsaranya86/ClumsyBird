@@ -23,12 +23,3 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-
-
- 
-   
- 
-    # Sync build output to S3
-    - name: Upload to S3
-      run: |
-        aws s3 sync ./build/ s3://clumsybirddbu --delete
