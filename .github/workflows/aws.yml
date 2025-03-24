@@ -20,9 +20,7 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -t -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com << EOF
-        echo "Running commands interactively!"
-        EOF
+        ssh -tt -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com << EOF
         cd https://github.com/Tsaranya86/ClumsyBird
         git pull origin main
         npm install
