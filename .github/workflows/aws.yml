@@ -21,8 +21,12 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh -tt -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com << EOF
-        cd https://github.com/Tsaranya86/ClumsyBird.git
+        git clone https://github.com/Tsaranya86/ClumsyBird.git
+        cd ClumsyBird
         git pull origin main
+        sudo apt update
+        sudo apt install npm -y
+        sudo apt install nodejs -y
         npm install
         pm2 restart all
         EOF
