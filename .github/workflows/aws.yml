@@ -21,7 +21,7 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh -tt -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com << EOF
-        cd https://github.com/Tsaranya86/ClumsyBird
+        cd https://github.com/Tsaranya86/ClumsyBird.git
         git pull origin main
         npm install
         pm2 restart all
