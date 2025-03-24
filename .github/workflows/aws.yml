@@ -24,9 +24,6 @@ jobs:
         git clone https://github.com/Tsaranya86/ClumsyBird.git
         cd ClumsyBird
         git pull origin main
-        sudo apt update
-        sudo apt install npm -y
-        npm -v
         npm install
         pm2 restart all
         EOF
