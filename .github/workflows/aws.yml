@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -tt -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com
+        ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-147-205-221.us-east-2.compute.amazonaws.com << EOF
         git clone https://github.com/Tsaranya86/ClumsyBird.git
         cd ClumsyBird
         git pull origin main
@@ -28,3 +28,4 @@ jobs:
         cd /home/ubuntu/ClumsyBird
         npm install
         pm2 start grunt --name "ClumsyBird"
+        EOF
