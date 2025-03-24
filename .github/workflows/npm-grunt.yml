@@ -26,18 +26,3 @@ jobs:
       run: |
         npm install
         grunt
-
-  
-     # Set up AWS credentials
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v3
-      with:
-        aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-        aws-region: us-east-1
-   
- 
-    # Sync build output to S3
-    - name: Upload to S3
-      run: |
-        aws s3 sync ./build/ s3://clumsybirddbu --delete
