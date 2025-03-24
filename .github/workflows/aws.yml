@@ -26,7 +26,7 @@ jobs:
         git pull origin main
         sudo apt update
         sudo apt install npm -y
-        sudo apt install nodejs -y
+        npm -v
         npm install
         pm2 restart all
         EOF
