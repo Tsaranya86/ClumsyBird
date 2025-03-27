@@ -38,12 +38,12 @@ var game = {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
-   //     me.audio.init("mp3,ogg");
+        me.audio.init("mp3,ogg");
         me.loader.preload(game.resources, this.loaded.bind(this));
     },
 
     "loaded": function() {
-//        me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.GAME_OVER, new game.GameOverScreen());
 
