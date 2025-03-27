@@ -23,8 +23,8 @@ jobs:
     - name: Build
       run: |
         npm install -g grunt-cli
-        npm install
         grunt clean
+        npm install
         grunt build --force
         grunt
         
