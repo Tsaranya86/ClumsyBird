@@ -24,8 +24,8 @@ jobs:
 
     - name: Build
       run: |
+        npm install -g grunt-cli
         grunt build --force
-        npm install
         grunt
         
      # Set up AWS credentials
