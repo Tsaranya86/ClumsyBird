@@ -29,27 +29,6 @@ jobs:
           grunt build --force
           grunt
 
-      - name: Generate Changelog
-        id: changelog
-        run: |
-          git fetch --tags
-          echo "## Changes in this release:" > changelog.md
-          git log --oneline $(git describe --tags --abbrev=0)..HEAD >> changelog.md
-
-      - name: Create Tag
-        run: |
-          git tag -a v1.0.0 -m "Release v1.0.0"
-          git push origin v1.0.0
-
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.sha }}
-          body_path: changelog.md
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
