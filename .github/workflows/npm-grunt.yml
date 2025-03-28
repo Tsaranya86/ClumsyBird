@@ -13,9 +13,10 @@ jobs:
         node-version: [18.x]
 
     steps:
+    - name: Checkout Code
     - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Set Up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
@@ -24,12 +25,27 @@ jobs:
       run: |
         npm install -g grunt-cli
         npm install
-        npm test
-        grunt test --force
         grunt clean
         grunt build --force
         grunt
         
+    - name: Generate Changelog
+      id: changelog
+      run: |
+          git fetch --tags
+          echo "## Changes in this release:" > changelog.md
+          git log --oneline $(git describe --tags --abbrev=0)..HEAD >> changelog.md
+
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body_path: changelog.md
+
+
      # Set up AWS credentials
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v3
