@@ -24,8 +24,8 @@ jobs:
       run: |
         npm install -g grunt-cli
         npm install
-        grunt test
-        npm test --force
+        npm test
+        grunt test --force
         grunt clean
         grunt build --force
         grunt
