@@ -36,6 +36,11 @@ jobs:
           echo "## Changes in this release:" > changelog.md
           git log --oneline $(git describe --tags --abbrev=0)..HEAD >> changelog.md
 
+      - name: Create Tag
+        run: |
+          git tag -a v1.0.0 -m "Release v1.0.0"
+          git push origin v1.0.0
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
