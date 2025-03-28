@@ -13,50 +13,45 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - name: Checkout Code
-    - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set Up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install -g grunt-cli
-        npm install
-        grunt clean
-        grunt build --force
-        grunt
-        
-    - name: Generate Changelog
-      id: changelog
-      run: |
+      - name: Build
+        run: |
+          npm install -g grunt-cli
+          npm install
+          grunt clean
+          grunt build --force
+          grunt
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
           git fetch --tags
           echo "## Changes in this release:" > changelog.md
           git log --oneline $(git describe --tags --abbrev=0)..HEAD >> changelog.md
 
-    - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
+        with:
           tag_name: ${{ github.sha }}
           release_name: Release ${{ github.sha }}
           body_path: changelog.md
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: us-east-2
 
-     # Set up AWS credentials
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v3
-      with:
-        aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-        aws-region: us-east-2
-   
- 
-    # Sync build output to S3
-    - name: Upload to S3
-      run: |
-        aws s3 sync ./build/ s3://clumsybirddbu/build
-        
+      - name: Upload to S3
+        run: |
+          aws s3 sync ./build/ s3://clumsybirddbu/build
