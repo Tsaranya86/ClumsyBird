@@ -29,13 +29,6 @@ jobs:
           grunt build --force
           grunt
 
-      - name: Create Tag
-        run: |
-          git tag -a v1.0.0 -m "Automated release tag for v1.0.0"
-          git push origin v1.0.0
-          git config --global user.email "saranya.t86@gmail.com"
-          git config --global user.name "Sara"
-        
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
