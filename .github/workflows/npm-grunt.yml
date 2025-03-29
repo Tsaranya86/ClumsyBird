@@ -42,3 +42,21 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 sync ./build/ s3://clumsybirddbu/build
+
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/output.zip # Replace with the actual path to your build assets
+          asset_name: output.zip
+          asset_content_type: application/zip
