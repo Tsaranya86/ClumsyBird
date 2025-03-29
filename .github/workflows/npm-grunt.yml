@@ -28,7 +28,7 @@ jobs:
 
       - name: Build the project
         run: |
-          grunt clean
+          grunt clean --force
           grunt build --force
           grunt
 
