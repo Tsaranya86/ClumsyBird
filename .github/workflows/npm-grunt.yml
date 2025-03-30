@@ -31,9 +31,10 @@ jobs:
           grunt clean --force
           grunt build --force
           grunt
-
-      - name: Debug: Verify Build Directory
-        run: ls -al ./build || { echo "Build directory not found"; exit 1; }
+          
+      - name: Verify
+        run: |
+          ls -al ./build || { echo "Build directory not found"; exit 1; }
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,8 +47,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.SECRET_KEY }}
           aws-region: us-east-2
 
-      - name: 
-        Debug: Verify Build Directory Before Deployment
+      - name: Verify Build Directory Before Deployment
         run: ls -al ./build
 
       - name: Upload to S3
