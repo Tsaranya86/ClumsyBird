@@ -24,6 +24,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g grunt-cli
+          npm install grunt-contrib-copy --save-dev
+          npm install grunt-contrib-imagemin --save-dev
           npm install
 
       - name: Build the project
