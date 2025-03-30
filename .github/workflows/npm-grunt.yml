@@ -28,6 +28,7 @@ jobs:
 
       - name: Build the project
         run: |
+          mkdir -p ./build  # Ensure the build directory exists
           grunt clean --force
           grunt build --force
           grunt
