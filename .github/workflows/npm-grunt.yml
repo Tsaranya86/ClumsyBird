@@ -49,7 +49,7 @@ jobs:
            name: build
            
       - name: Extract Artifact
-        run: unzip -o build.zip -d ./build
+        run: unzip -o /home/runner/work/ClumsyBird/ClumsyBird/build.zip -d ./build
            
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
