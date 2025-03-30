@@ -35,7 +35,7 @@ jobs:
       - name: Deploy to Main Branch
         run: |
           git config --global user.email "saranya.t86@gmail.com"
-          git config --global user.name "Sara T"
+          git config --global user.name "Tsaranya86"
           
           # Fetch all branches and switch to main
           git fetch
