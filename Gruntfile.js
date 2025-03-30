@@ -85,14 +85,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    // Default task.
-    grunt.registerTask('default', ['uglify']);
-    grunt.registerTask('lint', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat']);
-    // Clean build directory.
-    grunt.registerTask('clean-build', ['clean:dist']);
-    // Copy PNG files to build directory.
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+    // Register tasks
+    grunt.registerTask('build', ['clean', 'uglify', 'imagemin']);
     grunt.registerTask('copy-images', ['copy:images']);
-    // Optimize PNG files and copy to build directory.
-    grunt.registerTask('optimize-images', ['imagemin']);
+    grunt.registerTask('lint', ['jshint:beforeConcat', 'jshint:afterConcat']);
+
     
 };
