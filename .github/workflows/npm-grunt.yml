@@ -48,11 +48,11 @@ jobs:
         with:
            name: build
            
-      - name: Debug
-        run: ls -ltr /home/runner/work/ClumsyBird/ClumsyBird
+      - name: Show Current Directory
+        run: pwd
 
-      - name: Extract Artifact
-        run: unzip -o /home/runner/work/ClumsyBird/ClumsyBird/build.zip -d ./build
+      - name: List Files in Current Directory
+        run: ls -al /home/runner/work/ClumsyBird/ClumsyBird
            
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
