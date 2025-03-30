@@ -52,7 +52,7 @@ jobs:
         run: pwd
 
       - name: List Files in Current Directory
-        run: ls -al /home/runner/work/ClumsyBird/ClumsyBird
+        run: ls -al /home/runner/work/ClumsyBird
            
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
