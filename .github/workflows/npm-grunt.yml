@@ -32,6 +32,10 @@ jobs:
           grunt build --force
           grunt
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
