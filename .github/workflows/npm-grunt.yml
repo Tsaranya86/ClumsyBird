@@ -48,6 +48,9 @@ jobs:
         with:
            name: build
            
+      - name: Debug
+        run: ls -al /home/runner/work/ClumsyBird
+
       - name: Extract Artifact
         run: unzip -o /home/runner/work/ClumsyBird/ClumsyBird/build.zip -d ./build
            
