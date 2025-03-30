@@ -32,20 +32,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to Main Branch
-        run: |
-          git config --global user.email "saranya.t86@gmail.com"
-          git config --global user.name "Tsaranya86"
-          
-          # Fetch all branches and switch to main
-          git fetch
-          git checkout main
-
-          # Merge develop into main
-          git merge develop --no-ff -m "Deploying from develop to main"
-
-          # Push changes to main
-          git push origin main
+    - name: Deploy to main branch
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add .
+        git commit -m "Automated build"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
           
