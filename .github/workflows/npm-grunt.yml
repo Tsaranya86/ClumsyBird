@@ -45,8 +45,8 @@ jobs:
           git config user.email "saranya.t86@gmail.com"
           git status
           if [ -n "$(git status --porcelain)" ]; then
-            git add .
-            git commit -m "chore: Save changes before version bump"
+            git add -A
+            git commit -m "chore: Save changes before version bump" || echo "No changes to commit"
           fi 
           npm version patch -m "chore(release): %s"
           VERSION=$(node -p "require('./package.json').version")
