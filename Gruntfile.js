@@ -59,13 +59,24 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'images/',
+                        cwd: 'data/img',
                         src: ['**/*.png'],
                         dest: 'build/images/'
                     }
                 ]
             }
-        },   
+        },  
+        copy: {
+            html: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['index.html'],
+                        dest: 'build/'
+                    }
+                ]
+            }
+        } 
 
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -78,8 +89,7 @@ module.exports = function(grunt) {
     // Default task.
     grunt.registerTask('default', ['uglify']);
     grunt.registerTask('lint', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat']);
-    grunt.registerTask('build', ['clean', 'uglify']);
-    grunt.registerTask('copy-images', ['copy:images']);
-
+    grunt.registerTask('build', ['clean', 'uglify', 'copy:html', 'copy:images','copy:html']);
+    grunt.registerTask('server', ['connect:root']);
     
 };
