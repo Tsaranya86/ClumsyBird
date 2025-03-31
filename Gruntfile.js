@@ -65,36 +65,21 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        },
-        
-        imagemin: {
-            dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'images/',
-                    src: ['**/*.png'],
-                    dest: 'build/images/'
-                }]
-            }
-        },
+        },   
+
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks("grunt-contrib-connect");
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    // Register tasks
-    grunt.registerTask('build', ['clean', 'uglify', 'imagemin']);
+    // Default task.
+    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('lint', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat']);
+    grunt.registerTask('build', ['clean', 'uglify']);
     grunt.registerTask('copy-images', ['copy:images']);
-    grunt.registerTask('lint', ['jshint:beforeConcat', 'jshint:afterConcat']);
 
     
 };
