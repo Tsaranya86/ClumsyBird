@@ -25,12 +25,10 @@ jobs:
         run: |
           npm install -g grunt-cli
           npm install grunt-contrib-copy --save-dev
-          npm install grunt-contrib-imagemin --save-dev
           npm install
 
       - name: Build the project
         run: |
-          mkdir -p ./build  # Ensure the build directory exists
           grunt clean --force
           grunt build --force
           grunt
