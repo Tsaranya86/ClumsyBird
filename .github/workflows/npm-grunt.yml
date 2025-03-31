@@ -41,6 +41,13 @@ jobs:
 
       - name: Increment Version
         run: |
+          git config user.name "Tsaranya86"
+          git config user.email "saranya.t86@gmail.com"
+          git status
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "chore: Save changes before version bump"
+          fi 
           npm version patch -m "chore(release): %s"
           VERSION=$(node -p "require('./package.json').version")
           git tag v$VERSION
