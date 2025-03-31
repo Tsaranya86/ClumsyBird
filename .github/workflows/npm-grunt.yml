@@ -38,7 +38,7 @@ jobs:
         with:
           name: build
           path: ./build
-
+          
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -48,6 +48,9 @@ jobs:
         with:
            name: build
            
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
       - name: Show Current Directory
         run: pwd
 
