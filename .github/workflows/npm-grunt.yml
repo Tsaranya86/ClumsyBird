@@ -1,4 +1,4 @@
-name: NodeJS with Grunt
+name: NodeJS with Grunt and Version History
 
 on:
   push:
@@ -32,13 +32,20 @@ jobs:
           grunt clean --force
           grunt build --force
           grunt
-          
-          
+                    
       - name: Upload Build Directory
         uses: actions/upload-artifact@v4
         with:
           name: build
           path: ./build
+
+      - name: Increment Version
+        run: |
+          npm version patch -m "chore(release): %s"
+          VERSION=$(node -p "require('./package.json').version")
+          git tag v$VERSION
+          git push origin main
+          git push origin --tags
           
   deploy:
     runs-on: ubuntu-latest
