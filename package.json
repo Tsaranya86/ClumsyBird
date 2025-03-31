@@ -1,6 +1,6 @@
 {
   "name": "clumsy-bird",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Clumsy Bird - A MelonJS port of the famous Flappy Bird game",
   "homepage": "http://ellisonleao.github.io/clumsy-bird/",
   "repository": {
