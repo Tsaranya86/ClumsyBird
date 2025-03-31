@@ -48,9 +48,7 @@ jobs:
         with:
            name: build
            
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        
+
       - name: Show Current Directory
         run: pwd
 
@@ -67,5 +65,5 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 sync /home/runner/work/ClumsyBird/ClumsyBird/ s3://clumsybirddbu/build
-          aws s3 cp /home/runner/work/ClumsyBird/ s3://clumsybirddbu/data --recursive --exclude "*" --include "*.html" --include "*.js" --include "*.css" --include "*.png" --include "*.jpg" --include "*.gif" --include "*.svg" --include "*.woff2" --include "*.woff" --include "*.ttf" --include "*.eot" --include "*.ico"
+          aws s3 cp /home/runner/work/ClumsyBird/ s3://clumsybirddbu/data --recursive --exclude "*" --include "*.html" --include "*.js" --include "*.css" --include "*.png" --include "*.jpg" --include "*.gif"
 
