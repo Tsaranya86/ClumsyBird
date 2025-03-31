@@ -46,7 +46,7 @@ jobs:
           git status
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "chore: Save changes before version bump" || echo "No changes to commit"
+            git commit -m "chore(release): %s" || echo "No changes to commit"
           fi 
           npm version patch -m "chore(release): %s"
          
