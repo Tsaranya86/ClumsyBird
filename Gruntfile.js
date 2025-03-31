@@ -61,7 +61,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'data/img/',
                         src: ['**/*.png'],
-                        dest: 'build/images/'
+                        dest: 'build/img/'
                     }
                 ]
             }
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
     // Default task.
     grunt.registerTask('default', ['uglify']);
     grunt.registerTask('lint', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat']);
-    grunt.registerTask('build', ['clean', 'uglify', 'copy:html', 'copy:images','copy:html']);
+    grunt.registerTask('build', ['clean', 'uglify', 'copy:html', 'copy:images']);
     grunt.registerTask('server', ['connect:root']);
     
 };
