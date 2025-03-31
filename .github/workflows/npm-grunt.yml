@@ -52,8 +52,15 @@ jobs:
             git commit -m "chore: Save changes before version bump" || echo "No changes to commit"
           fi 
           npm version patch -m "chore(release): %s"
+         
           VERSION=$(node -p "require('./package.json').version")
-          git tag v$VERSION
+          if git rev-parse "$VERSION" >/dev/null 2>&1; then
+            echo "Tag $VERSION already exists, skipping tagging."
+          else
+            git tag $VERSION
+            git push origin $VERSION
+          fi
+          
           git push origin main
           git push origin --tags
           
