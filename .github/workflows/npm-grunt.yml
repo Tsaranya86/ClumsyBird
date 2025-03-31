@@ -45,7 +45,10 @@ jobs:
           git config user.email "saranya.t86@gmail.com"
           git status
           if [ -n "$(git status --porcelain)" ]; then
-            git add -A
+            git add build/clumsy-min.js
+            git add package-lock.json
+            git add package.json
+            git add build/index.html
             git commit -m "chore: Save changes before version bump" || echo "No changes to commit"
           fi 
           npm version patch -m "chore(release): %s"
