@@ -49,6 +49,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 this._super(me.Renderable, 'init', [0, 0, 100, 100]);
 
                 this.text = me.device.touch ? 'DARE TO PLAY' : 'PRESS ANY KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
+                
                 this.font = new me.Font('gamefont', 20, '#000');
             },
             draw: function (renderer) {
