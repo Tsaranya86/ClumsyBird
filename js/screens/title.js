@@ -48,7 +48,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 // renderable
                 this._super(me.Renderable, 'init', [0, 0, 100, 100]);
 
-                this.text = me.device.touch ? 'T TO PLAY' : 'PRESS ANY KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
+                this.text = me.device.touch ? 'TAP ONCE TO PLAY' : 'PRESS ANY ONE KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
                 
                 this.font = new me.Font('gamefont', 20, '#000');
             },
