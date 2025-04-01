@@ -48,10 +48,14 @@ game.TitleScreen = me.ScreenObject.extend({
                 // renderable
                 this._super(me.Renderable, 'init', [0, 0, 100, 100]);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 this.text = me.device.touch ? 'Touch TO PLAY !!!' : 'CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
 =======
                 this.text = me.device.touch ? 'TAP TO PLAY !!!' : 'PRESS ANY KEY CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
 >>>>>>> Feature-Dev
+=======
+                this.text = me.device.touch ? 'TAP TO PLAY' : 'PRESS ANY KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
+>>>>>>> feature_st
                 this.font = new me.Font('gamefont', 20, '#000');
             },
             draw: function (renderer) {
