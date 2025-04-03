@@ -48,9 +48,9 @@ game.TitleScreen = me.ScreenObject.extend({
                 // renderable
                 this._super(me.Renderable, 'init', [0, 0, 100, 100]);
 
-                this.text = me.device.touch ? 'TAP TO PLAY this game' : 'PRESS ANY ONE KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
+                this.text = me.device.touch ? 'TAP TO PLAY GRT!!' : 'PRESS ANY ONE KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
                 
-                this.font = new me.Font('gamefont', 55, '#000');
+                this.font = new me.Font('gamefont', 100, '#000');
             },
             draw: function (renderer) {
                 var measure = this.font.measureText(renderer, this.text);
