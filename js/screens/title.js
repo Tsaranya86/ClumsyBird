@@ -50,7 +50,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
                 this.text = me.device.touch ? 'TAP TO PLAY ONCE!!' : 'PRESS ANY ONE KEY STROKES OR CLICK LEFT MOUSE BUTTON TO START \n\t\t\t\t\t\t\t\t\t\t\tPRESS "M" TO MUTE SOUNDS';
                 
-                this.font = new me.Font('gamefont', 100, '#000');
+                this.font = new me.Font('gamefont', 25, '#000');
             },
             draw: function (renderer) {
                 var measure = this.font.measureText(renderer, this.text);
